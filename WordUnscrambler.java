@@ -5,6 +5,7 @@ public class WordUnscrambler{
     private JLabel label;
     private JTextField input;
     private JPanel panel;
+    private JPanel textPanel;
 
     public void gameFrame(){
         frame = new JFrame("Word Unscrambler");
@@ -18,6 +19,12 @@ public class WordUnscrambler{
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         
     }
+
+    public void inputPanel(){
+        textPanel = new JPanel();
+        //textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.PAGE_AXIS));
+    }
+
     public void text(){
         label = new JLabel("How to Play: Unscramble the given word to win!");
         label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
@@ -26,14 +33,17 @@ public class WordUnscrambler{
     }
 
     public void inputField(){
-        input = new JTextField(15);
+        input = new JTextField(10);
+        input.setAlignmentX(JTextField.CENTER_ALIGNMENT);
     }
 
     public void frameAdd(){
 
         panel.add(label);
-        panel.add(input);
+        textPanel.add(input);
         
+        panel.add(textPanel);
+
         frame.add(panel);
         frame.setVisible(true);
     }
@@ -42,6 +52,7 @@ public class WordUnscrambler{
         WordUnscrambler game = new WordUnscrambler();
         game.gameFrame();
         game.gamePanel();
+        game.inputPanel();
         game.text();
         game.inputField();
         game.frameAdd();
