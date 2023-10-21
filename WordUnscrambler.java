@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.Font;
 
 public class WordUnscrambler{
     private JFrame frame;
@@ -6,6 +7,7 @@ public class WordUnscrambler{
     private JTextField input;
     private JPanel panel;
     private JPanel textPanel;
+    private JLabel word;
 
     public void gameFrame(){
         frame = new JFrame("Word Unscrambler");
@@ -24,7 +26,14 @@ public class WordUnscrambler{
         textPanel = new JPanel();
         //textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.PAGE_AXIS));
     }
+    
+    public void scrambledWord(){
+        word = new JLabel("Test");
+        word.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        word.setFont(new Font("Serif",Font.BOLD, 20));
+        word.setOpaque(true);
 
+    }
     public void text(){
         label = new JLabel("How to Play: Unscramble the given word to win!");
         label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
@@ -40,9 +49,12 @@ public class WordUnscrambler{
     public void frameAdd(){
 
         panel.add(label);
+        panel.add(Box.createVerticalStrut(100));
+        panel.add(word);
+        panel.add(Box.createVerticalStrut(200));
         textPanel.add(input);
-        
         panel.add(textPanel);
+        
 
         frame.add(panel);
         frame.setVisible(true);
@@ -54,6 +66,7 @@ public class WordUnscrambler{
         game.gamePanel();
         game.inputPanel();
         game.text();
+        game.scrambledWord();
         game.inputField();
         game.frameAdd();
     }
