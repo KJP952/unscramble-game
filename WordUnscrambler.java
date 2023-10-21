@@ -8,6 +8,7 @@ public class WordUnscrambler{
     private JPanel panel;
     private JPanel textPanel;
     private JLabel word;
+    private JButton enter;
 
     public void gameFrame(){
         frame = new JFrame("Word Unscrambler");
@@ -41,6 +42,10 @@ public class WordUnscrambler{
         
     }
 
+    public void enterButton(){
+        enter = new JButton("Enter");
+    }
+
     public void inputField(){
         input = new JTextField(10);
         input.setAlignmentX(JTextField.CENTER_ALIGNMENT);
@@ -53,6 +58,7 @@ public class WordUnscrambler{
         panel.add(word);
         panel.add(Box.createVerticalStrut(200));
         textPanel.add(input);
+        textPanel.add(enter);
         panel.add(textPanel);
         
 
@@ -68,6 +74,7 @@ public class WordUnscrambler{
         game.text();
         game.scrambledWord();
         game.inputField();
+        game.enterButton();
         game.frameAdd();
     }
 }
