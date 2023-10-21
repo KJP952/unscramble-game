@@ -15,10 +15,14 @@ public class WordUnscrambler{
 
     public void gamePanel(){
         panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        
     }
     public void text(){
         label = new JLabel("How to Play: Unscramble the given word to win!");
+        label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         label.setOpaque(true);
+        
     }
 
     public void inputField(){
@@ -26,6 +30,7 @@ public class WordUnscrambler{
     }
 
     public void frameAdd(){
+
         panel.add(label);
         panel.add(input);
         
