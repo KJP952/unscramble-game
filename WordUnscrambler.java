@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.Font;
+import java.util.List;
+import java.util.ArrayList;
 
 public class WordUnscrambler{
     private JFrame frame;
@@ -9,6 +11,9 @@ public class WordUnscrambler{
     private JPanel textPanel;
     private JLabel word;
     private JButton enter;
+
+    private List<String> ScrambledList;
+    private List<String> unScrambledList;
 
     public void gameFrame(){
         frame = new JFrame("Word Unscrambler");
@@ -21,6 +26,33 @@ public class WordUnscrambler{
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         
+    }
+
+    public void words(){
+        ScrambledList = new ArrayList<>();
+        ScrambledList.add("EGLALRY"); 
+        ScrambledList.add("RPUMOTCE");
+        ScrambledList.add("TVENIS");
+        ScrambledList.add("OETENLPHO");
+        ScrambledList.add("ELPAP");
+        ScrambledList.add("RUBOTIR");
+        ScrambledList.add("RMOWKOBOO");
+        ScrambledList.add("LSHNIGE");
+        ScrambledList.add("POMCHAIN");
+        ScrambledList.add("OEPUR");
+
+        unScrambledList = new ArrayList<>();
+        unScrambledList.add("GALLERY");
+        unScrambledList.add("COMPUTER");
+        unScrambledList.add("INVEST");
+        unScrambledList.add("TELEPHONE");
+        unScrambledList.add("APPLE");
+        unScrambledList.add("BURRITO");
+        unScrambledList.add("BOOKWORM");
+        unScrambledList.add("ENGLISH");
+        unScrambledList.add("CHAMPION");
+        unScrambledList.add("EUROPE");
+
     }
 
     public void inputPanel(){
