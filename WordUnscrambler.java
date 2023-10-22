@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.Font;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class WordUnscrambler{
     private JFrame frame;
@@ -11,6 +12,8 @@ public class WordUnscrambler{
     private JPanel textPanel;
     private JLabel word;
     private JButton enter;
+    private int randomNum;
+    private String randomWord;
 
     private List<String> ScrambledList;
     private List<String> unScrambledList;
@@ -61,7 +64,10 @@ public class WordUnscrambler{
     }
     
     public void scrambledWord(){
-        word = new JLabel("Test");
+        randomNum = (int) (Math.random() * 10);
+        randomWord = ScrambledList.get(randomNum);
+
+        word = new JLabel(randomWord);
         word.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         word.setFont(new Font("Serif",Font.BOLD, 20));
         word.setOpaque(true);
@@ -102,6 +108,7 @@ public class WordUnscrambler{
         WordUnscrambler game = new WordUnscrambler();
         game.gameFrame();
         game.gamePanel();
+        game.words();
         game.inputPanel();
         game.text();
         game.scrambledWord();
