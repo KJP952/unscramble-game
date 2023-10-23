@@ -18,6 +18,7 @@ public class WordUnscrambler{
     
     
     private JButton enter;
+    private JButton reset;
 
     private int randomNum;
     private String randomWord;
@@ -35,6 +36,7 @@ public class WordUnscrambler{
     public void gamePanel(){
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+
         
     }
 
@@ -69,7 +71,6 @@ public class WordUnscrambler{
         textPanel = new JPanel();
         //textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.PAGE_AXIS));
     }
-
         
 
     public void scrambledWord(){
@@ -109,6 +110,25 @@ public class WordUnscrambler{
         });
     }
 
+    public void resetButton(){
+        reset = new JButton("Reset");
+        reset.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent w){
+                result.setText("");
+                panel.remove(word);
+                scrambledWord();
+                
+                word.setText(randomWord);
+           
+                panel.add(word);
+                panel.revalidate();
+                panel.repaint();
+
+            }
+        });
+
+    }
+
     public void inputField(){
         input = new JTextField(10);
         input.setAlignmentX(JTextField.CENTER_ALIGNMENT);
@@ -128,9 +148,12 @@ public class WordUnscrambler{
 
         textPanel.add(input);
         textPanel.add(enter);
+        textPanel.add(reset);
 
+        
         panel.add(textPanel);
         panel.add(result);
+        
         
 
         frame.add(panel);
@@ -148,6 +171,7 @@ public class WordUnscrambler{
         game.inputField();
         game.enterButton();
         game.resultLabel();
+        game.resetButton();
         game.frameAdd();
     }
 }
