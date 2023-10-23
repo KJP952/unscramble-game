@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 public class WordUnscrambler{
     private JFrame frame;
+
     private JPanel panel;
     private JPanel textPanel;
     private JPanel wordPanel;
@@ -15,31 +16,20 @@ public class WordUnscrambler{
     private JLabel label;
     private JLabel word;
     private JLabel result;
+    private JLabel scoreLabel;
+
     private JTextField input;
-    
     
     private JButton enter;
     private JButton reset;
 
     private int randomNum;
+    private int score;
+
     private String randomWord;
 
     private List<String> ScrambledList;
     private List<String> unScrambledList;
-
-    public void gameFrame(){
-        frame = new JFrame("Word Unscrambler");
-        frame.setSize(500,500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-    }
-
-    public void gamePanel(){
-        panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-
-        
-    }
 
     public void words(){
         ScrambledList = new ArrayList<>();
@@ -68,18 +58,28 @@ public class WordUnscrambler{
 
     }
 
+    public void gameFrame(){
+        frame = new JFrame("Word Unscrambler");
+        frame.setSize(500,500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+
+    //panels
+    public void gamePanel(){
+        panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+    }
+
     public void inputPanel(){
         textPanel = new JPanel();
-        //textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.PAGE_AXIS));
     }
 
     public void wPanel(){
         wordPanel = new JPanel();
-
     }
 
-        
-
+    //generate a random word from the list
     public void scrambledWord(){
         randomNum = (int) (Math.random() * 10);
         randomWord = ScrambledList.get(randomNum);
@@ -93,6 +93,7 @@ public class WordUnscrambler{
 
     }
 
+    //labels
     public void text(){
         label = new JLabel("How to Play: Unscramble the given word to win!");
         label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
@@ -100,6 +101,26 @@ public class WordUnscrambler{
         
     }
 
+     public void inputField(){
+        input = new JTextField(10);
+        input.setAlignmentX(JTextField.CENTER_ALIGNMENT);
+    }
+
+    public void resultLabel(){
+        result = new JLabel("");
+        result.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+    }
+
+    public void scoreLabel(){
+        scoreLabel = new JLabel("Score: " + score);
+        scoreLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+    }
+
+    public void updateScoreLabel(){
+        scoreLabel.setText("Score: " + score);
+    }
+
+    //Buttons
     public void enterButton(){
         enter = new JButton("Enter");
          enter.addActionListener(new ActionListener(){
@@ -108,6 +129,8 @@ public class WordUnscrambler{
                 String unscrambledWord = unScrambledList.get(randomNum);
             if (userInput.equalsIgnoreCase(unscrambledWord)) {
                 result.setText ("Correct! You unscrambled the word.");
+                score++;
+                updateScoreLabel();
             } else {
                 result.setText("Incorrect. Try again.");
             }
@@ -124,7 +147,7 @@ public class WordUnscrambler{
                 result.setText("");
 
                 wordPanel.removeAll();
-                
+
                 panel.revalidate();
                 panel.repaint();
 
@@ -139,16 +162,6 @@ public class WordUnscrambler{
             }
         });
 
-    }
-
-    public void inputField(){
-        input = new JTextField(10);
-        input.setAlignmentX(JTextField.CENTER_ALIGNMENT);
-    }
-
-    public void resultLabel(){
-        result = new JLabel("");
-        result.setAlignmentX(JLabel.CENTER_ALIGNMENT);
     }
 
     public void frameAdd(){
@@ -166,9 +179,8 @@ public class WordUnscrambler{
         
         panel.add(textPanel);
         panel.add(result);
+        panel.add(scoreLabel);
         
-        
-
         frame.add(panel);
         frame.setVisible(true);
     }
@@ -185,6 +197,7 @@ public class WordUnscrambler{
         game.inputField();
         game.enterButton();
         game.resultLabel();
+        game.scoreLabel();
         game.resetButton();
         game.frameAdd();
     }
