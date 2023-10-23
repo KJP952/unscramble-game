@@ -10,6 +10,7 @@ public class WordUnscrambler{
     private JFrame frame;
     private JPanel panel;
     private JPanel textPanel;
+    private JPanel wordPanel;
 
     private JLabel label;
     private JLabel word;
@@ -71,6 +72,12 @@ public class WordUnscrambler{
         textPanel = new JPanel();
         //textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.PAGE_AXIS));
     }
+
+    public void wPanel(){
+        wordPanel = new JPanel();
+
+    }
+
         
 
     public void scrambledWord(){
@@ -115,12 +122,17 @@ public class WordUnscrambler{
         reset.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent w){
                 result.setText("");
-                panel.remove(word);
+
+                wordPanel.removeAll();
+                
+                panel.revalidate();
+                panel.repaint();
+
                 scrambledWord();
                 
                 word.setText(randomWord);
+                wordPanel.add(word);
            
-                panel.add(word);
                 panel.revalidate();
                 panel.repaint();
 
@@ -143,8 +155,9 @@ public class WordUnscrambler{
 
         panel.add(label);
         panel.add(Box.createVerticalStrut(100));
-        panel.add(word);
-        panel.add(Box.createVerticalStrut(200));
+
+        wordPanel.add(word);
+        panel.add(wordPanel);
 
         textPanel.add(input);
         textPanel.add(enter);
@@ -164,6 +177,7 @@ public class WordUnscrambler{
         WordUnscrambler game = new WordUnscrambler();
         game.gameFrame();
         game.gamePanel();
+        game.wPanel();
         game.words();
         game.inputPanel();
         game.text();
